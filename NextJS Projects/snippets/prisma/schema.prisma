@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// we have created a model for snippets to tell prisma that we will insert the enttrire for snippets in sqlite db
+model Snippet {
+  // we have provided the id to it with a default tag and its id will auto increment starting from 0
+  id    Int    @id @default(autoincrement())
+  title String
+  code  String
+}
