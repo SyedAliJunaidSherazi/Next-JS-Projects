@@ -52,7 +52,7 @@ export async function createTopic(actionState: CreateActionStateProps, formData:
     try{
         topic = await db.topic.create({
             data:{
-                slug: result.data.name,
+                slug: result.data.name.trim(),
                 description: result.data.description
             }
         })
@@ -74,6 +74,6 @@ export async function createTopic(actionState: CreateActionStateProps, formData:
 
     }
     revalidatePath('/');
-    redirect(paths.topicShow(topic.slug));
+    redirect(paths.topicShow(encodeURIComponent(topic.slug)));
    
 }
