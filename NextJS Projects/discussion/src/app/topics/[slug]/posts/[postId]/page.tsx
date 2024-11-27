@@ -13,7 +13,7 @@ interface PostShowPageProps {
 }
 
 export default async function PostShowPage({ params }: PostShowPageProps) {
-  const { slug, postId } = params;
+  const { slug, postId } = await params;
 
   return (
     <div className="space-y-3">
